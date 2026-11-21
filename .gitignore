@@ -5,16 +5,7 @@ __pycache__/
 .ruff_cache/
 .venv/
 
-# Data and model weights live on Hugging Face / Zenodo, never in git
-data/
-raw/
-*.zip
-*.h5
-*.hdf5
-*.safetensors
-*.pt
-*.ckpt
-
+# Data and model weights live on Hugging Face / Zenodo, never in gi
 # Experiment output
 runs/
 outputs/
