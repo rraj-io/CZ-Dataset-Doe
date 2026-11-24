@@ -55,17 +55,17 @@ def test_exact_predictions(
     )
 
     np.testing.assert_allclose(
-        results["MAE"].to_numpy(),
+        results["mae"].to_numpy(),
         0.0,
     )
 
     np.testing.assert_allclose(
-        results["RMSE"].to_numpy(),
+        results["rmse"].to_numpy(),
         0.0,
     )
 
     np.testing.assert_allclose(
-        results.loc["T", "relative_L2"],
+        results.loc["T", "relative_l2"],
         0.0,
     )
 
@@ -87,13 +87,13 @@ def test_known_scalar_errors() -> None:
         prediction,
     )
 
-    assert metrics["MAE"] == pytest.approx(1.0)
+    assert metrics["mae"] == pytest.approx(1.0)
 
-    assert metrics["RMSE"] == pytest.approx(
+    assert metrics["rmse"] == pytest.approx(
         np.sqrt(5.0 / 3.0)
     )
 
-    assert metrics["relative_L2"] == pytest.approx(
+    assert metrics["relative_l2"] == pytest.approx(
         np.sqrt(5.0 / 14.0)
     )
 
@@ -121,15 +121,15 @@ def test_weighted_scalar_errors() -> None:
         weights=weights,
     )
 
-    assert metrics["Volume_MAE"] == pytest.approx(
+    assert metrics["volume_mae"] == pytest.approx(
         4.0 / 6.0
     )
 
-    assert metrics["Volume_RMSE"] == pytest.approx(
+    assert metrics["volume_rmse"] == pytest.approx(
         np.sqrt(4.0 / 6.0)
     )
 
-    assert metrics["Volume_Relative_L2"] == pytest.approx(
+    assert metrics["volume_relative_l2"] == pytest.approx(
         np.sqrt(4.0 / 94.0)
     )
 
@@ -151,16 +151,16 @@ def test_field_wise_evaluation(
         "u_r", "u_z", "u_swirl", "p", "T"
     ]
 
-    assert results.loc["u_r", "MAE"] == pytest.approx(
+    assert results.loc["u_r", "mae"] == pytest.approx(
         2.0 / 3.0
     )
 
-    assert results.loc["T", "MAE"] == pytest.approx(
+    assert results.loc["T", "mae"] == pytest.approx(
         20.0 / 3.0
     )
 
-    assert results.loc["u_z", "MAE"] == 0.0
-    assert results.loc["p", "RMSE"] == 0.0
+    assert results.loc["u_z", "mae"] == 0.0
+    assert results.loc["p", "rmse"] == 0.0
 
 
 def test_interior_node_mask(
@@ -180,11 +180,11 @@ def test_interior_node_mask(
         node_mask=mask,
     )
 
-    assert results.loc["u_r", "MAE"] == pytest.approx(
+    assert results.loc["u_r", "mae"] == pytest.approx(
         0.5
     )
 
-    assert results.loc["T", "MAE"] == pytest.approx(
+    assert results.loc["T", "mae"] == pytest.approx(
         5.0
     )
 
@@ -204,8 +204,8 @@ def test_zero_reference_norm() -> None:
         prediction,
     )
 
-    assert metrics["MAE"] == pytest.approx(1.0)
-    assert np.isnan(metrics["relative_L2"])
+    assert metrics["mae"] == pytest.approx(1.0)
+    assert np.isnan(metrics["relative_l2"])
 
 
 def test_invalid_inputs(

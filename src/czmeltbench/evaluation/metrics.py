@@ -113,9 +113,9 @@ def calculate_error_metrics(
     )
 
     results: dict[str, float] = {
-        "MAE": float(np.mean(abs_error)),
-        "RMSE": rms_error,
-        "relative_L2": relative_l2,
+        "mae": float(np.mean(abs_error)),
+        "rmse": rms_error,
+        "relative_l2": relative_l2,
     }
 
     if weights is not None:
@@ -171,9 +171,9 @@ def calculate_error_metrics(
         )
 
         results.update({
-            "Volume_MAE": weighted_mae,
-            "Volume_RMSE": weighted_rmse,
-            "Volume_Relative_L2": weighted_relative_l2,
+            "volume_mae": weighted_mae,
+            "volume_rmse": weighted_rmse,
+            "volume_relative_l2": weighted_relative_l2,
         })
 
     return results
