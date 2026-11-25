@@ -256,21 +256,13 @@ def test_equal_case_aggregation(
 
     assert temperature_mae["valid_cases"] == 2
 
-    assert temperature_mae["mean"] == pytest.approx(
-        2.0
-    )
+    assert temperature_mae["mean"] == pytest.approx(2.0)
 
-    assert temperature_mae["std"] == pytest.approx(
-        1.0
-    )
+    assert temperature_mae["std"] == pytest.approx(1.0)
 
-    assert temperature_mae["min"] == pytest.approx(
-        1.0
-    )
+    assert temperature_mae["min"] == pytest.approx(1.0)
 
-    assert temperature_mae["max"] == pytest.approx(
-        3.0
-    )
+    assert temperature_mae["max"] == pytest.approx(3.0)
 
 
 def test_case_metadata(
